@@ -2,30 +2,32 @@
   <div id="app">
     <Navbar />
     <router-view/>
+    <Jumbotron />
   </div>
+
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue'
+import Navbar from './components/Navbar.vue';
+import Jumbotron from './components/Jumbotron.vue';
 
 export default {
   name: 'App',
   components: {
-    Navbar
+    Navbar,
+    Jumbotron 
   }
 }
 </script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+html body {
+  font-family: 'Montserrat','Poppins', 'sans-serif';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  background-color: #212529; /* Nero */
+  margin-top: 40px;
 }
 
-body {
-  background-color: #212529; /* Nero */
-}
+
 </style>

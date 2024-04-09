@@ -17,12 +17,17 @@
 
     <div class="nav-links" >
     <ul>
-      <li ><router-link to="/">Home</router-link></li>
-      <li ><router-link to="clients">Clients</router-link></li>
-      <li><router-link to="/pricing">Pricing</router-link></li>
-      <li ><router-link to="/blog">Blog</router-link></li>
-      <li ><router-link to="/contact">Contact</router-link></li>
-      <li class="nav-link px-3 my-2 buy-now"><router-link to="/buy">Buy Now</router-link></li>
+      <li ><router-link to="/">HOME</router-link></li>
+      <li ><router-link to="clients">FEATURES</router-link></li>
+      <li><router-link to="/pricing">PORTFOLIO</router-link></li>
+      <li ><router-link to="/blog">RESUME</router-link></li>
+      <li ><router-link to="/contact">PRICING</router-link></li>
+      <li ><router-link to="clients">BLOG</router-link></li>
+      <li><router-link to="/pricing">PORTFOLIO</router-link></li>
+      <li ><router-link to="/blog">RESUME</router-link></li>
+      <li ><router-link to="/contact">CONTACT</router-link></li>
+
+      <li class="nav-link px-3 my-2 buy-now"> <router-link to="/buy">BUY NOW</router-link></li>
     </ul>
   </div>
 
@@ -30,7 +35,7 @@
     <div class="close-icon" @click="toggleMenu">X</div>
   <div class="sidebar-content">
     <div class="sidebar-logo">
-      <img src="@/assets/logo.png" alt="Logo" style="width: 50px; height:50px; border-radius: 50%;">
+      <img src="@/assets/logo.png" alt="Logo" style="width: 30px; height:30px; border-radius: 50%;">
     </div>
    <p class="testosidebar">Inbio is a personal portfolio template. You can customize all.</p>
     
@@ -90,6 +95,8 @@ export default {
 .navbar {
   margin: 30px;
   display: flex;
+  flex-wrap: nowrap; 
+
   align-items: center;
   justify-content: space-between;
   font-family: 'Montserrat', sans-serif
@@ -115,12 +122,15 @@ export default {
   background-color:rgb(84, 83, 83);  
   padding: 5px; 
   margin-left: 30px;
+  margin-top: -15px;
+
 }
 
 .logotitle {
   font-family: 'Montserrat', sans-serif;
   color:white;
   padding: 10px;
+
  
 }
 
@@ -177,6 +187,7 @@ a {
   width: 25px;
   height: 3px;
   margin: 5px auto;
+  margin-right: 20px;
   background-color: #ff014f;/* Colore da mettere rosso*/
 
 }
@@ -200,17 +211,26 @@ a {
 }
 
 .nav-links ul li a {
-  color: white;
+  display: block;
+  color: grey;
   text-decoration: none;
   font-family: 'Montserrat', sans-serif;
+    transition: var(--transition);
+    font-size: 13px;
+    font-weight: var(--s-regular);
+    font-family: var(--font-secondary);
+  
 }
 
+.nav-links ul li a:hover {
+  color: white;
+}
 
 .buy-now a {
   color: #ff014f; /* Imposta il colore del testo a rosso */
   background: linear-gradient(145deg, #1e2024, #1a1c1f); /* Sfondo del pulsante */
   border: none; /* Rimuove il bordo predefinito */
-  padding: 10px 20px; /* Aggiusta il padding a piacimento */
+  padding: 10px 20px; /* il padding a piacimento */
   text-align: center; /* Allinea il testo al centro */
   text-decoration: none; /* Rimuove sottolineatura dai link */
   display: inline-block; /* Permette la personalizzazione di margini e padding */
@@ -220,6 +240,8 @@ a {
   border-radius: 5px; /* Angoli arrotondati */
   transition: background 0.3s ease-in-out, transform 0.3s ease-in-out; /* Transizioni animate */
   box-shadow: -2px -5px 10px #2b2b2b;
+  white-space: nowrap;
+
 }
 
 .buy-now a:hover {
@@ -268,8 +290,8 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px; /* Regola a piacimento */
-  height: 0px;
+  width: 50px; /* Regola a piacimento */
+  height: 50px;
   border-radius: 50%;
   margin: 20px 20px 20px;
   background-color: rgb(58, 58, 58);
@@ -291,7 +313,7 @@ a {
   list-style: none; /* Rimuove i puntini degli elenchi */
   padding: 0; /* Rimuove il padding di default */
   margin: 0; /* Rimuove il margine di default */
-  display: flex; /* Abilita Flexbox */
+  display: flex; 
   flex-direction: column; /* Dispone gli elementi figli in colonna */
   align-items: flex-start; /* Allinea gli elementi a sinistra */
   padding: 20px;
@@ -369,6 +391,10 @@ a {
   color: white; /* Mantiene il colore del testo a rosso anche al passaggio del mouse */
 }
 
+.sidebar ul li a, .sidebar ul li router-link {
+  text-decoration: none; /* Rimuove la sottolineatura */
+  color: inherit; /* Mantiene il colore del testo ereditato senza cambiarlo */
+}
 /* Media query */
 /* Media query */
 /* Media query */
@@ -376,7 +402,7 @@ a {
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   .hamburger {
     display: block; /* Mostra l'hamburger */
   }
