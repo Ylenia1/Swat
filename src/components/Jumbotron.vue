@@ -1,7 +1,4 @@
 <template>
-
-
-
 <div id="home">
     <div class="area-slide pt-1">
         <div class="contenitore container">
@@ -25,9 +22,9 @@
                         </div>
                         <!--Icone-->
                         <div class="row">
-                            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-12 row-ss ">
+                            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-12  ">
                                 
-                                <p class="testo-social-skill text row-ss">Find with me</p>
+                                <p class="testo-social-skill text ">Find with me</p>
 
                                 <div class="area-socialskill">
                                     <a href="https://www.facebook.com/yourprofile" class="d-block mb-2"> 
@@ -90,10 +87,10 @@
        
        
         </div><!--@container-->
+        <div class="section"> </div>
     </div> <!--@area-slide-->
 </div> <!--#home-->
 
-<div class="section"> </div>
 
 </template>
   
@@ -135,7 +132,7 @@
           this.animatedWord = ''; //azzera la parola da animare, che nel ciclo if verrà arricchita
           this.currentLetterIndex = 0;//azzera lettere
           this.animateWords(); //avvia animazione
-        }, 2000); // Ha trovato la parola, attendi 2 sec. || setTimeout(() => { ... }, 2000);: ||
+        }, 2000); // Ha trovato la parola, attendi 2 sec. || setTimeout(() => { @. }, 2000);: ||
       }
     },
   },
@@ -153,10 +150,7 @@
     margin: 0 auto; /* Centra l'area slide */
     display: block;
     position: relative;
-
-    max-width: 1100px; /* larghezza massima dell'area slide */
-    
-    
+    margin-top: 150px;
 
 
 }
@@ -244,12 +238,19 @@
   margin: 4px 2px; 
   cursor: pointer; 
   border-radius: 5px; 
-  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out; 
+  transition: background 0.3s ease-in-out, 
+  transform 0.3s ease-in-out; 
   box-shadow: -2px -5px 10px #2b2b2b;
   white-space: nowrap;
 
 }
 
+.area-socialskill a:hover {
+background: linear-gradient(145deg, #1a1e21, #121416); /* Cambia il gradient al passaggio del mouse */
+  transform: translateY(-5px); /* Sposta leggermente in alto il pulsante */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  color: white; 
+}
 
 /*seconda colonna:*/
 
@@ -317,8 +318,13 @@
   transform: translateX(-50%);
   background: var(--background-color-1);
   box-shadow: var(--shadow-1);
-  border-radius: 6px;}
+  border-radius: 6px;
 
+}
+  
+.box{
+    padding-bottom: 40px;
+}
 
 /* area classi per font*/
 .uppercase {
@@ -407,9 +413,7 @@
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-    .row-ss {
-        margin-top: 100px;
-    }
+
 }
 
 
@@ -430,6 +434,7 @@
     right: 0;
     margin: 0 auto;
     margin-top: 100px;
+
   }
 
 

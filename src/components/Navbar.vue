@@ -1,12 +1,12 @@
 <template>
-
+<div class="menu ombra">
   <nav class="navbar">
   <div class="conteinerlogo">
     <div class="logo">
-      <img src="@/assets/logo.png" alt="Logo" style="width: 40px; height: 40px; border-radius: 50%;">
+      <img src="@/assets/logo.png" alt="Logo" >
       
     </div>
-     <span class="logotitle"> <p>INBIO</p>  </span>
+    
   </div>
 
     <button class="hamburger"  @click="toggleMenu">
@@ -15,27 +15,40 @@
       <span></span>
     </button>
 
+    <div class="nav-links">
+      <a :href="$route.path === '/' ? '/' : '/'" class="nav-btn" :class="{ active: isActive('/') }">  <span class="nav-link"> HOME </span> </a>
+      <a :href="$route.path === '/#features' ? '/#features' : '/#features'" class="nav-btn" :class="{ active: isActive('/#features') }">  <span class="nav-link"> FEATURES </span> </a>
+      <a :href="$route.path === '/#portfolio' ? '/portfolio' : 'portfolio'" class="nav-btn" :class="{ active: isActive('/#portfolio') }"> <span class="nav-link"> PORTFOLIO </span> </a>
+      <a :href="$route.path === '/#resume' ? '/resume' : 'resume'" class="nav-btn" :class="{ active: isActive('/#resume') }"><span class="nav-link">RESUME</span></a>
+      <a :href="$route.path === '/#clients' ? '/#clients' : '/#clients'" class="nav-btn" :class="{ active: isActive('/#clients') }"> <span class="nav-link">CLIENTS</span></a>
+      <a :href="$route.path === '/#pricing' ? '/#pricing' : '/#pricing'" class="nav-btn" :class="{ active: isActive('/#pricing') }"> <span class="nav-link">PRICING</span></a>
+      <a :href="$route.path === '/#blog' ? '/#blog' : '/#blog'" class="nav-btn" :class="{ active: isActive('/#blog') }"><span class="nav-link">BLOG</span></a>
+      <a :href="$route.path === '/#contact' ? '/#contact' : '/#contact'" class="nav-btn" :class="{ active: isActive('/#contact') }"> <span class="nav-link">CONTACT</span></a>
+
+    <li class="nav-link px-3 my-2 buy-now"> <router-link to="/buy" ><span class="fontBuyNow">BUY NOW</span></router-link></li>
+</div>
+
+<!-- 
     <div class="nav-links" >
     <ul>
       <li ><router-link to="/">HOME</router-link></li>
       <li ><router-link to="clients">FEATURES</router-link></li>
       <li><router-link to="/pricing">PORTFOLIO</router-link></li>
-      <li ><router-link to="/blog">RESUME</router-link></li>
-      <li ><router-link to="/contact">PRICING</router-link></li>
-      <li ><router-link to="clients">BLOG</router-link></li>
-      <li><router-link to="/pricing">PORTFOLIO</router-link></li>
-      <li ><router-link to="/blog">RESUME</router-link></li>
+      <li ><router-link to="/resume">RESUME</router-link></li>
+
+      <li ><router-link to="clients">CLIENTS</router-link></li>
+      <li><router-link to="/pricing">PRICING</router-link></li>
       <li ><router-link to="/contact">CONTACT</router-link></li>
 
       <li class="nav-link px-3 my-2 buy-now"> <router-link to="/buy">BUY NOW</router-link></li>
     </ul>
   </div>
-
+-->
   <div class="sidebar " :class="{ open: isOpen }">
     <div class="close-icon" @click="toggleMenu">X</div>
   <div class="sidebar-content">
     <div class="sidebar-logo">
-      <img src="@/assets/logo.png" alt="Logo" style="width: 30px; height:30px; border-radius: 50%;">
+      <img src="@/assets/logo.png" alt="Logo" style="width:40%" >
     </div>
    <p class="testosidebar">Inbio is a personal portfolio template. You can customize all.</p>
     
@@ -69,6 +82,7 @@
 </div>
 
   </nav>
+</div>
   <div class="overlay" v-if="isOpen" @click="toggleMenu"></div>
 
 </template>
@@ -84,7 +98,24 @@ export default {
   methods: {
     toggleMenu() {
       this.isOpen = !this.isOpen;
+    },
+    isActive(hash) {
+  return this.$route.hash === hash;
+},
+    scrollToFeatures() {
+
+      const featuresElement = document.getElementById('features');
+      if (featuresElement) {
+        const yOffset = featuresElement.getBoundingClientRect().top;
+  
+        window.scrollTo({ top: yOffset, behavior: 'smooth' });
+      }
     }
+
+
+  
+
+
   }
 }
 
@@ -92,55 +123,117 @@ export default {
 
 <!--navbar -->
 <style>
+
+.fontBuyNow {
+  font-size: 12px;
+}
+
+
+.ombra {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Cambia i valori secondo le tue esigenze */
+}
+
+.nav-links {
+  display: flex;
+  align-items: center; 
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: -5px;
+}
+
+.nav-links .nav-btn {
+  margin: 0 10px;
+  text-decoration: none;
+  color: grey;
+  font-family: 'Montserrat', sans-serif;
+  transition: var(--transition);
+  font-size: 13px;
+  font-weight: var(--s-regular);
+  font-family: var(--font-secondary);
+}
+/*
+ .nav-links .nav-btn:active {
+  color: white;
+}*/
+
+@keyframes activateLink {
+  from {
+    color: grey; /* Colore iniziale */
+  }
+  to {
+    color: white; /* Colore finale quando attivo */
+  }
+}
+
+
+.nav-links .nav-btn:active {
+  animation: activateLink ; 
+}
+
+
+.buy-now a {
+
+  color: #ff014f;
+  background: linear-gradient(145deg, #1e2024, #1a1c1f);
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+  box-shadow: -2px -5px 10px #2b2b2b;
+  white-space: nowrap;
+}
+
+.buy-now a:hover {
+  background: linear-gradient(145deg, #1a1e21, #121416);
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  color: #ff014f;
+
+}
+.buy-now a:visited {
+  color: #ff014f;
+
+}
+
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #212529;
+  z-index: 1000;
+
+}
+
 .navbar {
   margin: 30px;
+  height: 40px;
   display: flex;
   flex-wrap: nowrap; 
-
   align-items: center;
   justify-content: space-between;
-  font-family: 'Montserrat', sans-serif
-
-}
-
-.conteinerlogo{
-  display: flex;
-  align-items: center;
-  justify-content: center;
- 
-
-}
-
-.logo {
-  /* cerchio intorno al logo */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px; 
-  height: 50px; 
-  border-radius: 50%;
-  background-color:rgb(84, 83, 83);  
-  padding: 5px; 
-  margin-left: 30px;
-  margin-top: -15px;
-
-}
-
-.logotitle {
   font-family: 'Montserrat', sans-serif;
-  color:white;
-  padding: 10px;
-
- 
 }
 
 
+.logo{
+  padding-left: 1rem;
+  width: 90%;
+  margin-top: -20px;
+}
 
 .logo img {
   display: block;
   max-width: 100%;
   height: auto;
-  border-radius: 50%; 
+
 }
 ul {
 
@@ -288,15 +381,9 @@ a {
 
 .sidebar-logo {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px; /* Regola a piacimento */
-  height: 50px;
-  border-radius: 50%;
-  margin: 20px 20px 20px;
-  background-color: rgb(58, 58, 58);
-  padding: 5px; 
-
+  align-items: left;
+  padding-left: 10px;
+  margin-top: 10px;
 }
 
 .sidebar-divider {
