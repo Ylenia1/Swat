@@ -5,7 +5,7 @@
     <Jumbotron />
     <Features />
     <frecciaSu />
-    <nuovazona />
+
     <appFooter />
  
 
